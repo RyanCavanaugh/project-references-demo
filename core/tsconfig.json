@@ -2,7 +2,7 @@
   "extends": "../tsproject.json",
   "compilerOptions": {
     "outDir": "../lib/core",
-    "references": [],
-    "rootDir": "."
+    "rootDir": ".",
+    "references": []
   }
 }

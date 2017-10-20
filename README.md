@@ -36,3 +36,8 @@ The structure of this repo is as follows:
 /node_modules          NPM modules
 ```
 
+# Branches You Can Try
+
+The following branches are provided for demo purposes
+
+ * `circular`: Introduces a circular dependency `zoo` -> `animals` -> `core` -> `zoo`
