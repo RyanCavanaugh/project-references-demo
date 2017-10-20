@@ -2,6 +2,11 @@
   "extends": "../tsproject.json",
   "compilerOptions": {
     "outDir": "../lib/core",
-    "rootDir": "."
+    "rootDir": ".",
+    "references": [
+      {
+        "path": "../zoo"
+      }
+    ]
   }
 }
