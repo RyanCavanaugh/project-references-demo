@@ -1,3 +1,4 @@
+import * as A from '../animals';
 
 export function makeRandomName() {
     return "Bob";
