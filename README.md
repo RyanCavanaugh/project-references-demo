@@ -41,3 +41,4 @@ The structure of this repo is as follows:
 The following branches are provided for demo purposes
 
  * `circular`: Introduces a circular dependency `zoo` -> `animals` -> `core` -> `zoo`
+ * `bad-ref`: Introduces an illegal `import` in `core` to `animals`
