@@ -40,5 +40,13 @@ The structure of this repo is as follows:
 
 The following branches are provided for demo purposes
 
+### `circular`
+This branch introduces a circular dependency by editing the `core` project's `tsconfig.json` to add a dependency to `zoo`.
+```
+
+```
+
  * `circular`: Introduces a circular dependency `zoo` -> `animals` -> `core` -> `zoo`
  * `bad-ref`: Introduces an illegal `import` in `core` to `animals`
+ * `empty-sleeves`: 
+
