@@ -42,11 +42,26 @@ The following branches are provided for demo purposes
 
 ### `circular`
 This branch introduces a circular dependency by editing the `core` project's `tsconfig.json` to add a dependency to `zoo`.
+Attempting to build any project will cause an error:
 ```
+> git checkout circular
+> gulp core
+[07:25:22] Using gulpfile C:\github\project-references-demo\gulpfile.js
+[07:25:22] Starting 'core'...
+TS6187: Project references may not form a circular graph. Cycle detected:
+    C:/github/project-references-demo/core/tsconfig.json ->
+    C:/github/project-references-demo/zoo/tsconfig.json ->
+    C:/github/project-references-demo/animals/tsconfig.json ->
+    C:/github/project-references-demo/core/tsconfig.json
+[07:25:25] Finished 'core' after 2.89 s
+```
+### bad-ref
+This branch introduces an illegal reference in the source code by adding an `import` targeting a file outside the project folder. Attempting to build `core` will cause an error:
+```
+> git checkout bad-ref
 
 ```
 
- * `circular`: Introduces a circular dependency `zoo` -> `animals` -> `core` -> `zoo`
  * `bad-ref`: Introduces an illegal `import` in `core` to `animals`
  * `empty-sleeves`: 
 
