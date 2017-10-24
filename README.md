@@ -70,5 +70,11 @@ TS6059: File 'C:/github/project-references-demo/animals/animal.ts' is not under 
 Nothing up my sleeves 🐇🎩!
 This branch *deletes* the `core` and `animals` source files.
 The `zoo` project can still be built because it only consumes the output files.
+```
+> gulp clean
+> gulp animals
+> git checkout empty-sleeves
+> gulp zoo
 
+```
 
