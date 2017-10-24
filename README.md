@@ -55,13 +55,20 @@ TS6187: Project references may not form a circular graph. Cycle detected:
     C:/github/project-references-demo/core/tsconfig.json
 [07:25:25] Finished 'core' after 2.89 s
 ```
-### bad-ref
+### `bad-ref`
 This branch introduces an illegal reference in the source code by adding an `import` targeting a file outside the project folder. Attempting to build `core` will cause an error:
 ```
 > git checkout bad-ref
-
+> gulp core
+[07:30:24] Using gulpfile C:\github\project-references-demo\gulpfile.js
+[07:30:24] Starting 'core'...
+TS6059: File 'C:/github/project-references-demo/animals/animal.ts' is not under 'rootDir' 'C:/github/project-references-demo/core'. 'rootDir' is expected to contain all source files.
+[07:30:26] Finished 'core' after 2.4 s
 ```
 
- * `bad-ref`: Introduces an illegal `import` in `core` to `animals`
- * `empty-sleeves`: 
+### `empty-sleeves`
+Nothing up my sleeves 🐇🎩!
+This branch *deletes* the `core` and `animals` source files.
+The `zoo` project can still be built because it only consumes the output files.
+
 
