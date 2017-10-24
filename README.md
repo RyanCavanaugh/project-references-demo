@@ -38,7 +38,7 @@ The structure of this repo is as follows:
 
 # Branches You Can Try
 
-The following branches are provided for demo purposes
+The following branches are provided for demo/exploration purposes
 
 ### `circular`
 This branch introduces a circular dependency by editing the `core` project's `tsconfig.json` to add a dependency to `zoo`.
@@ -72,9 +72,12 @@ This branch *deletes* the `core` and `animals` source files.
 The `zoo` project can still be built because it only consumes the output files.
 ```
 > gulp clean
+[...]
 > gulp core animals
+[...]
 > git checkout empty-sleeves
 > gulp zoo
-
+[07:35:22] Using gulpfile C:\github\project-references-demo\gulpfile.js
+[07:35:22] Starting 'zoo'...
+[07:35:24] Finished 'zoo' after 2.15 s
 ```
-
