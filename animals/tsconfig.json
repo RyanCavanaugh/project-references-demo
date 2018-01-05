@@ -4,9 +4,7 @@
     "outDir": "../lib/animals",
     "rootDir": ".",
     "references": [
-      {
-        "path": "../core"
-      }
+      { "path": "../core" }
     ]
   }
 }
