@@ -8,7 +8,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "referenceTarget": true
+    "composite": true
   },
   
   "projects": [

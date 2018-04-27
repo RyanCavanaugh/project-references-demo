@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "../lib/animals",
     "rootDir": ".",
-    "references": [
-      { "path": "../core" }
-    ]
-  }
+  },
+  "references": [
+    { "path": "../core" }
+  ]
 }
