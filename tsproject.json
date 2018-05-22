@@ -10,10 +10,15 @@
     "noFallthroughCasesInSwitch": true,
     "composite": true
   },
-  
-  "projects": [
-    "./core",
-    "./animals",
-    "./zoo"
+  "references": [
+    {
+      "path": "./core"
+    },
+    {
+      "path": "./animals"
+    },
+    {
+      "path": "./zoo"
+    }
   ]
 }
