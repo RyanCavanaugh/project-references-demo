@@ -1,6 +1,6 @@
 
 export function makeRandomName() {
-    return "Bob";
+    return "Bob!?! ";
 }
 
 export function lastElementOf<T>(arr: T[]): T | undefined {

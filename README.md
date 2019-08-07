@@ -40,20 +40,64 @@ The structure of this repo is as follows:
 
 The following branches are provided for demo/exploration purposes
 
+### `master`
+This branch shows the normal layout
+
+```
+> git checkout master
+>yarn build
+yarn run v1.15.2
+$ tsc -b -v
+[11:02:33 AM] Projects in this build:
+    * core/tsconfig.json
+    * animals/tsconfig.json
+    * zoo/tsconfig.json
+    * tsconfig.json
+
+[11:02:33 AM] Project 'core/tsconfig.json' is out of date because output file 'lib/core/utilities.js' does not exist
+
+[11:02:33 AM] Building project 'c:/github/project-references-demo/core/tsconfig.json'...
+
+[11:02:35 AM] Project 'animals/tsconfig.json' is out of date because output file 'lib/animals/animal.js' does not exist
+
+[11:02:35 AM] Building project 'c:/github/project-references-demo/animals/tsconfig.json'...
+
+[11:02:35 AM] Project 'zoo/tsconfig.json' is out of date because output file 'lib/zoo/zoo.js' does not exist
+
+[11:02:35 AM] Building project 'c:/github/project-references-demo/zoo/tsconfig.json'...
+
+Done in 2.66s.
+
+>
+```
+
 ### `circular`
 This branch introduces a circular dependency by editing the `core` project's `tsconfig.json` to add a dependency to `zoo`.
 Attempting to build any project will cause an error:
 ```
 > git checkout circular
-> gulp core
-[07:25:22] Using gulpfile C:\github\project-references-demo\gulpfile.js
-[07:25:22] Starting 'core'...
-TS6187: Project references may not form a circular graph. Cycle detected:
-    C:/github/project-references-demo/core/tsconfig.json ->
-    C:/github/project-references-demo/zoo/tsconfig.json ->
-    C:/github/project-references-demo/animals/tsconfig.json ->
-    C:/github/project-references-demo/core/tsconfig.json
-[07:25:25] Finished 'core' after 2.89 s
+> yarn build
+yarn run v1.15.2
+$ tsc -b -v
+[11:52:04 AM] Projects in this build:
+    * animals/tsconfig.json
+    * zoo/tsconfig.json
+    * core/tsconfig.json
+    * tsconfig.json
+
+error TS6202: Project references may not form a circular graph. Cycle detected: c:/github/project-references-demo/tsconfig.json
+c:/github/project-references-demo/core/tsconfig.json
+c:/github/project-references-demo/zoo/tsconfig.json
+c:/github/project-references-demo/animals/tsconfig.json
+
+
+Found 1 error.
+
+error Command failed with exit code 4.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+>
+
 ```
 ### `bad-ref`
 This branch introduces an illegal reference in the source code by adding an `import` targeting a file outside the project folder. Attempting to build `core` will cause an error:

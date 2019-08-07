@@ -1,12 +1,12 @@
 {
-  "extends": "../tsproject.json",
+  "extends": "../tsconfig-base.json",
   "compilerOptions": {
     "outDir": "../lib/core",
-    "rootDir": ".",
-    "references": [
-      {
-        "path": "../zoo"
-      }
-    ]
-  }
+    "rootDir": "."
+  },
+  "references": [
+    {
+      "path": "../zoo"
+    }
+  ]
 }
