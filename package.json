@@ -1,0 +1,23 @@
+{
+  "name": "project-references-demo",
+  "version": "1.0.0",
+  "description": "The structure of this repo is as follows:",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b -v",
+    "clean": "tsc -b --clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanCavanaugh/project-references-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanCavanaugh/project-references-demo/issues"
+  },
+  "homepage": "https://github.com/RyanCavanaugh/project-references-demo#readme",
+  "dependencies": {
+    "typescript": "^3.5.3"
+  }
+}

@@ -17,14 +17,14 @@ The structure of this repo is as follows:
 /zoo                   Depends on 'animals' (directly) and 'core' (indirectly)
   /tsconfig.json         Config file for 'zoo' project
   /zoo.ts                Creates a zoo with some dogs in it (OK it's a weird zoo)
+/tsconfig.json           Solution file for the application
 ```
 
 #### Build and Build Configuration
 ```
 /core                  Base library for this application
 /lib                   Output folder (not checked in)
-/tsproject.json        Shared configuration file for common compiler options
-/gulpfile.js           Gulpfile
+/tsconfig-base.json    Shared configuration file for common compiler options
 ```
 
 #### The Usual Suspects
@@ -39,6 +39,37 @@ The structure of this repo is as follows:
 # Branches You Can Try
 
 The following branches are provided for demo/exploration purposes
+
+### `master`
+This branch shows the normal layout
+
+```
+> git checkout master
+>yarn build
+yarn run v1.15.2
+$ tsc -b -v
+[11:02:33 AM] Projects in this build:
+    * core/tsconfig.json
+    * animals/tsconfig.json
+    * zoo/tsconfig.json
+    * tsconfig.json
+
+[11:02:33 AM] Project 'core/tsconfig.json' is out of date because output file 'lib/core/utilities.js' does not exist
+
+[11:02:33 AM] Building project 'c:/github/project-references-demo/core/tsconfig.json'...
+
+[11:02:35 AM] Project 'animals/tsconfig.json' is out of date because output file 'lib/animals/animal.js' does not exist
+
+[11:02:35 AM] Building project 'c:/github/project-references-demo/animals/tsconfig.json'...
+
+[11:02:35 AM] Project 'zoo/tsconfig.json' is out of date because output file 'lib/zoo/zoo.js' does not exist
+
+[11:02:35 AM] Building project 'c:/github/project-references-demo/zoo/tsconfig.json'...
+
+Done in 2.66s.
+
+>
+```
 
 ### `circular`
 This branch introduces a circular dependency by editing the `core` project's `tsconfig.json` to add a dependency to `zoo`.
