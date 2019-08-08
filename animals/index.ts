@@ -1,6 +1,5 @@
 import Animal from './animal';
 
 export default Animal;
-import Dog from './dog';
-export { Dog };
-
+import { createDog, Dog } from './dog';
+export { createDog, Dog };
