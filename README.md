@@ -17,14 +17,14 @@ The structure of this repo is as follows:
 /zoo                   Depends on 'animals' (directly) and 'core' (indirectly)
   /tsconfig.json         Config file for 'zoo' project
   /zoo.ts                Creates a zoo with some dogs in it (OK it's a weird zoo)
+/tsconfig.json           Solution file for the application
 ```
 
 #### Build and Build Configuration
 ```
 /core                  Base library for this application
 /lib                   Output folder (not checked in)
-/tsproject.json        Shared configuration file for common compiler options
-/gulpfile.js           Gulpfile
+/tsconfig-base.json    Shared configuration file for common compiler options
 ```
 
 #### The Usual Suspects
@@ -99,15 +99,74 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 >
 
 ```
+
 ### `bad-ref`
 This branch introduces an illegal reference in the source code by adding an `import` targeting a file outside the project folder. Attempting to build `core` will cause an error:
 ```
 > git checkout bad-ref
-> gulp core
-[07:30:24] Using gulpfile C:\github\project-references-demo\gulpfile.js
-[07:30:24] Starting 'core'...
-TS6059: File 'C:/github/project-references-demo/animals/animal.ts' is not under 'rootDir' 'C:/github/project-references-demo/core'. 'rootDir' is expected to contain all source files.
-[07:30:26] Finished 'core' after 2.4 s
+>yarn build
+yarn run v1.15.2
+$ tsc -b -v
+[1:40:34 PM] Projects in this build:
+    * core/tsconfig.json
+    * animals/tsconfig.json
+    * zoo/tsconfig.json
+    * tsconfig.json
+
+[1:40:34 PM] Project 'core/tsconfig.json' is out of date because output file 'lib/core/utilities.js' does not exist
+
+[1:40:34 PM] Building project 'c:/github/project-references-demo/core/tsconfig.json'...
+
+animals/index.ts:1:20 - error TS6059: File 'c:/github/project-references-demo/animals/animal.ts' is not under 'rootDir' 'c:/github/project-references-demo/core'. 'rootDir' is expected to contain all source files.
+
+1 import Animal from './animal';
+                     ~~~~~~~~~~
+
+animals/index.ts:1:20 - error TS6307: File 'c:/github/project-references-demo/animals/animal.ts' is not listed within the file list of project 'c:/github/project-references-demo/core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+
+1 import Animal from './animal';
+                     ~~~~~~~~~~
+
+animals/index.ts:4:32 - error TS6059: File 'c:/github/project-references-demo/animals/dog.ts' is not under 'rootDir' 'c:/github/project-references-demo/core'. 'rootDir' is expected to contain all source files.
+
+4 import { createDog, Dog } from './dog';
+                                 ~~~~~~~
+
+animals/index.ts:4:32 - error TS6307: File 'c:/github/project-references-demo/animals/dog.ts' is not listed within the file list of project 'c:/github/project-references-demo/core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+
+4 import { createDog, Dog } from './dog';
+                                 ~~~~~~~
+
+core/utilities.ts:1:1 - error TS6133: 'A' is declared but its value is never read.
+
+1 import * as A from '../animals';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+core/utilities.ts:1:20 - error TS6059: File 'c:/github/project-references-demo/animals/index.ts' is not under 'rootDir' 'c:/github/project-references-demo/core'. 'rootDir' is expected to contain all source files.
+
+1 import * as A from '../animals';
+                     ~~~~~~~~~~~~
+
+core/utilities.ts:1:20 - error TS6307: File 'c:/github/project-references-demo/animals/index.ts' is not listed within the file list of project 'c:/github/project-references-demo/core/tsconfig.json'. Projects must list all files or use an 'include' pattern.
+
+1 import * as A from '../animals';
+                     ~~~~~~~~~~~~
+
+[1:40:35 PM] Project 'animals/tsconfig.json' can't be built because its dependency 'core' has errors
+
+[1:40:35 PM] Skipping build of project 'c:/github/project-references-demo/animals/tsconfig.json' because its dependency 'c:/github/project-references-demo/core' has errors
+
+[1:40:35 PM] Project 'zoo/tsconfig.json' can't be built because its dependency 'animals' was not built
+
+[1:40:35 PM] Skipping build of project 'c:/github/project-references-demo/zoo/tsconfig.json' because its dependency 'c:/github/project-references-demo/animals' was not built
+
+
+Found 7 errors.
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+>
 ```
 
 ### `empty-sleeves`
