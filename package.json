@@ -1,11 +1,14 @@
 {
+  "private": true,
   "name": "project-references-demo",
   "version": "1.0.0",
   "description": "The structure of this repo is as follows:",
-  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "tsc -b -v",
-    "clean": "tsc -b --clean"
+    "build": "tsc --build --verbose",
+    "clean": "tsc --build --clean"
   },
   "repository": {
     "type": "git",

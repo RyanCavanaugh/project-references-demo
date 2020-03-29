@@ -1,5 +1,6 @@
+import { makeRandomName } from '@example/core';
+
 import Animal from '.';
-import { makeRandomName } from '../core/utilities';
 
 export interface Dog extends Animal {
     woof(): void;

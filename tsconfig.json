@@ -2,13 +2,13 @@
   "files": [],
   "references": [
     {
-      "path": "./core"
+      "path": "packages/core"
     },
     {
-      "path": "./animals"
+      "path": "packages/animals"
     },
     {
-      "path": "./zoo"
+      "path": "packages/zoo"
     }
   ]
 }
