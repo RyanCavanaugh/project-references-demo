@@ -17,7 +17,7 @@ The structure of this repo is as follows:
 /zoo                   Depends on 'animals' (directly) and 'core' (indirectly)
   /tsconfig.json         Config file for 'zoo' project
   /zoo.ts                Creates a zoo with some dogs in it (OK it's a weird zoo)
-/tsconfig.json           Solution file for the application
+/tsconfig.json         Solution file for the application
 ```
 
 #### Build and Build Configuration
